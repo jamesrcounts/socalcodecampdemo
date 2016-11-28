@@ -3,6 +3,9 @@
   "Statement": [
     {
       "Action": [
+        "autoscaling:CreateLaunchConfiguration",
+        "autoscaling:DeleteLaunchConfiguration",
+        "autoscaling:Describe*",
         "ec2:AuthorizeSecurityGroup*",
         "ec2:CreateSecurityGroup",
         "ec2:DeleteSecurityGroup",
@@ -10,7 +13,8 @@
         "ec2:RevokeSecurityGroup*",
         "ecs:CreateCluster",
         "ecs:DeleteCluster",
-        "ecs:DescribeClusters"
+        "ecs:DescribeClusters",
+        "iam:PassRole"
       ],
       "Effect": "Allow",
       "Resource": "*"

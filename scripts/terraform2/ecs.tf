@@ -22,41 +22,19 @@ data "template_file" "user_data" {
   }
 }
 
-//resource "aws_launch_configuration" "tfci" {
+resource "aws_launch_configuration" "tfci" {
+  name                        = "tfci"
+  image_id                    = "${lookup(var.amis, var.region)}"
+  instance_type               = "t2.micro"
+  key_name                    = "${var.key_pair_name}"
+  associate_public_ip_address = false
 
+  security_groups = [
+    "${aws_security_group.tfci_web.id}",
+  ]
 
-//  name          = "tfci"
+  user_data = "${data.template_file.user_data.rendered}"
 
-
-//  image_id      = "ami-7abc111a"
-
-
-//  instance_type = "t2.micro"
-
-
-//  key_name      = "${var.key_pair_name}"
-
-
-//
-
-
-//  security_groups = [
-
-
-//    "sg-724c140b",
-
-
-//  ]
-
-
-//
-
-
-//  user_data            = "${data.template_file.user_data.rendered}"
-
-
-//  iam_instance_profile = "ecsInstanceRole"
-
-
-//}
-
+  // TODO: create custom role (for doco purposes)
+  iam_instance_profile = "ecsInstanceRole"
+}
