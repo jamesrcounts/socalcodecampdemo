@@ -3,7 +3,9 @@
   "Statement": [
     {
       "Action": [
+        "autoscaling:CreateAutoScalingGroup",
         "autoscaling:CreateLaunchConfiguration",
+        "autoscaling:DeleteAutoScalingGroup",
         "autoscaling:DeleteLaunchConfiguration",
         "autoscaling:Describe*",
         "ec2:AuthorizeSecurityGroup*",
@@ -14,7 +16,16 @@
         "ecs:CreateCluster",
         "ecs:DeleteCluster",
         "ecs:DescribeClusters",
-        "iam:PassRole"
+        "iam:AddRoleToInstanceProfile",
+        "iam:AttachRolePolicy",
+        "iam:CreateRole",
+        "iam:CreateInstanceProfile",
+        "iam:Describe*",
+        "iam:DeleteRole",
+        "iam:DeleteInstanceProfile",
+        "iam:GetRole",
+        "iam:PassRole",
+        "iam:UpdateAssumeRolePolicy"
       ],
       "Effect": "Allow",
       "Resource": "*"
