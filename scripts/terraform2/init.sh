@@ -12,7 +12,7 @@ init() {
     -backend=s3 \
     -backend-config="bucket=${BUCKET_NAME}" \
     -backend-config="key=network/terraform.tfstate" \
-    -backend-config="region=${AWS_DEFAULT_REGION}"
+    -backend-config="region=${TF_REMOTE_REGION}"
 
 }
 
