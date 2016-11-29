@@ -20,7 +20,7 @@ resource "aws_iam_user_policy_attachment" "ecs_policy_attach" {
 variable "build_label" {}
 
 data "template_file" "task-web" {
-  template = "${file("task-definitions/service.json")}"
+  template = "${file("task-definitions/tfci-web.json")}"
 
   vars {
     TASK_NAME = "${aws_ecr_repository.tfci_ecr.name}"
