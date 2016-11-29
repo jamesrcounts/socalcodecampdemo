@@ -68,35 +68,23 @@ resource "aws_subnet" "tfci" {
   count = 4
 }
 
-//resource "aws_alb" "tfci" {
+resource "aws_alb" "tfci" {
+  name_prefix     = "tfci"
+  security_groups = ["${aws_security_group.tfci_alb.id}"]
+  subnets         = ["${aws_subnet.tfci.*.id}"]
 
+  tags {
+    Environment = "production"
+  }
+}
 
-//  name = "tfci"
+resource "aws_alb_listener" "tfci" {
+  "default_action" {
+    target_group_arn = "${aws_alb_target_group.tfci_web.arn}"
+    type             = "forward"
+  }
 
-
-//
-
-
-//  security_groups = ["${aws_security_group.tfci_alb.id}"]
-
-
-//
-
-
-//  subnets = ["${aws_subnet.tfci.*.id}"]
-
-
-//
-
-
-//  tags {
-
-
-//    Environment = "production"
-
-
-//  }
-
-
-//}
-
+  load_balancer_arn = "${aws_alb.tfci.arn}"
+  port              = 80
+  protocol          = "HTTP"
+}

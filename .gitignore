@@ -3,3 +3,4 @@ node_modules
 secret.tfvars
 *.tfstate.backup
 *.tfplan
+*.tfstate
