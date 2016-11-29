@@ -13,4 +13,3 @@ resource "aws_iam_instance_profile" "tfci" {
   name  = "tfciInstanceProfile"
   roles = ["${aws_iam_role.tfci.name}"]
 }
-

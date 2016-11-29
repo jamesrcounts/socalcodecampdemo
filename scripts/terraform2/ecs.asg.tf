@@ -7,7 +7,7 @@ data "template_file" "user_data" {
 }
 
 resource "aws_launch_configuration" "tfci" {
-  name                        = "tfci"
+  name_prefix                 = "tfci-"
   image_id                    = "${lookup(var.amis, var.region)}"
   instance_type               = "t2.micro"
   key_name                    = "${var.key_pair_name}"
@@ -19,6 +19,10 @@ resource "aws_launch_configuration" "tfci" {
 
   user_data            = "${data.template_file.user_data.rendered}"
   iam_instance_profile = "${aws_iam_instance_profile.tfci.name}"
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "aws_autoscaling_group" "tfci" {
@@ -26,7 +30,8 @@ resource "aws_autoscaling_group" "tfci" {
   launch_configuration = "${aws_launch_configuration.tfci.name}"
   max_size             = 8
   min_size             = 1
-  availability_zones   = ["us-east-1a", "us-east-1b", "us-east-1c"]
+  availability_zones   = ["${var.availability_zones}"]
+  vpc_zone_identifier  = ["${aws_subnet.tfci.*.id}"]
 
   tag {
     propagate_at_launch = true

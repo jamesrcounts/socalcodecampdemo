@@ -2,6 +2,11 @@ resource "aws_security_group" "tfci_web" {
   name        = "tfci-web"
   description = "Group for web instances"
   depends_on  = ["aws_iam_user_policy_attachment.ecs_policy_attach"]
+  vpc_id      = "${aws_vpc.tfci.id}"
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "aws_security_group_rule" "allow_all_outbound" {
