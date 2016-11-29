@@ -1,0 +1,14 @@
+[
+  {
+    "image": "${IMAGE_URL}",
+    "memoryReservation": 128,
+    "name": "${TASK_NAME}",
+    "portMappings": [
+      {
+        "containerPort": 3000,
+        "hostPort": 0,
+        "protocol": "tcp"
+      }
+    ]
+  }
+]
