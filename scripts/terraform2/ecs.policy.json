@@ -21,6 +21,7 @@
         "ec2:Describe*",
         "ec2:ModifyVpcAttribute",
         "ec2:RevokeSecurityGroup*",
+        "ecs:RegisterTaskDefinition",
         "ecs:CreateCluster",
         "ecs:DeleteCluster",
         "ecs:DescribeClusters",
