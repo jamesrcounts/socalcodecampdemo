@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-AWS_ACCESS_KEY_ID=${TF_VAR_access_key}
-AWS_SECRET_ACCESS_KEY=${TF_VAR_secret_key}
-
 init() {
   if [ -d .terraform ]; then
     if [ -e .terraform/terraform.tfstate ]; then
