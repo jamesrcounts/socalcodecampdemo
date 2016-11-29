@@ -47,6 +47,17 @@
       ],
       "Effect": "Allow",
       "Resource": "*"
+    },
+    {
+      "Sid": "Stmt1479537268000",
+      "Effect": "Allow",
+      "Action": [
+        "s3:*"
+      ],
+      "Resource": [
+        "arn:aws:s3:::demos-jcounts",
+        "arn:aws:s3:::demos-jcounts/*"
+      ]
     }
   ]
 }
