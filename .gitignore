@@ -4,3 +4,4 @@ secret.tfvars
 *.tfstate.backup
 *.tfplan
 **/*.tfstate
+todo.log
