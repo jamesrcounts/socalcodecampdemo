@@ -23,6 +23,8 @@ resource "aws_launch_configuration" "tfci" {
   lifecycle {
     create_before_destroy = true
   }
+
+  depends_on = ["aws_internet_gateway.tfci"]
 }
 
 resource "aws_autoscaling_group" "tfci" {

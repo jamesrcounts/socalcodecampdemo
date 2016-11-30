@@ -41,3 +41,11 @@ resource "aws_subnet" "tfci" {
 
   count = 4
 }
+
+resource "aws_internet_gateway" "tfci" {
+  vpc_id = "${aws_vpc.tfci.id}"
+
+  tags {
+    Name = "tfci"
+  }
+}
