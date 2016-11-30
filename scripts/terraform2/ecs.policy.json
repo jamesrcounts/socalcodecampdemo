@@ -13,6 +13,8 @@
         "ec2:AttachInternetGateway",
         "ec2:CreateInternetGateway",
         "ec2:DeleteInternetGateway",
+        "ec2:CreateRoute",
+        "ec2:DeleteRoute",
         "ec2:CreateSecurityGroup",
         "ec2:CreateSubnet",
         "ec2:CreateTags",
