@@ -38,7 +38,7 @@ resource "aws_ecs_service" "tfci" {
   cluster         = "${aws_ecs_cluster.tfci.id}"
   task_definition = "${aws_ecs_task_definition.web.arn}"
   desired_count   = 2
-  iam_role        = "${aws_iam_role.tfci.arn}"
+  iam_role        = "${aws_iam_role.service.arn}"
 
   load_balancer {
     target_group_arn = "${aws_alb_target_group.tfci_web.arn}"
