@@ -10,6 +10,7 @@
         "autoscaling:DeleteLaunchConfiguration",
         "autoscaling:Describe*",
         "ec2:AuthorizeSecurityGroup*",
+        "ec2:AttachInternetGateway",
         "ec2:CreateInternetGateway",
         "ec2:DeleteInternetGateway",
         "ec2:CreateSecurityGroup",
