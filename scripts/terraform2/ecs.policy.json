@@ -33,6 +33,7 @@
         "ecs:DeleteCluster",
         "ecs:CreateService",
         "ecs:DeleteService",
+        "ecs:UpdateService",
         "elasticLoadBalancing:CreateListener",
         "elasticLoadBalancing:DeleteListener",
         "elasticLoadBalancing:CreateLoadBalancer",
