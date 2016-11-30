@@ -11,7 +11,7 @@ resource "aws_launch_configuration" "tfci" {
   image_id                    = "${lookup(var.amis, var.region)}"
   instance_type               = "t2.micro"
   key_name                    = "${var.key_pair_name}"
-  associate_public_ip_address = false
+  associate_public_ip_address = true
 
   security_groups = [
     "${aws_security_group.tfci_web.id}",
