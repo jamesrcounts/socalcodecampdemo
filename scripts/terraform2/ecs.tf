@@ -32,3 +32,17 @@ resource "aws_ecs_task_definition" "web" {
   family                = "tfci-web"
   container_definitions = "${data.template_file.task-web.rendered}"
 }
+
+resource "aws_ecs_service" "tfci" {
+  name            = "tfci"
+  cluster         = "${aws_ecs_cluster.tfci.id}"
+  task_definition = "${aws_ecs_task_definition.web.arn}"
+  desired_count   = 2
+  iam_role        = "${aws_iam_role.tfci.arn}"
+
+  load_balancer {
+    target_group_arn = "${aws_alb_target_group.tfci_web.arn}"
+    container_name   = "${aws_ecr_repository.tfci_ecr.name}"
+    container_port   = 3000
+  }
+}
