@@ -52,6 +52,7 @@ resource "aws_internet_gateway" "tfci" {
 
 resource "aws_route" "tfci" {
   route_table_id         = "${aws_vpc.tfci.main_route_table_id}"
+  nat_gateway_id         = "${aws_internet_gateway.tfci.id}"
   destination_cidr_block = "0.0.0.0/0"
   depends_on             = ["aws_vpc.tfci"]
 }
